@@ -1,0 +1,30 @@
+{
+  "name": "dht-store",
+  "version": "1.0.0",
+  "description": "A key/value store based on DHT.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Covertness/node-dht-store.git"
+  },
+  "keywords": [
+    "dht",
+    "kv"
+  ],
+  "author": "covertness",
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "tape": "^4.4.0"
+  },
+  "dependencies": {
+    "bencode": "^0.7.0",
+    "debug": "^2.2.0",
+    "k-rpc": "^3.5.1",
+    "lru": "^1.2.0",
+    "type-of-is": "^3.4.0"
+  }
+}
