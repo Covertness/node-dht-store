@@ -1,4 +1,9 @@
 # node-dht-store
+[![Build Status](https://travis-ci.org/Covertness/node-dht-store.svg?branch=master)](https://travis-ci.org/Covertness/node-dht-store)
+[![Coverage Status](https://coveralls.io/repos/Covertness/node-dht-store/badge.svg)](https://coveralls.io/r/Covertness/node-dht-store)
+[![npm version](https://badge.fury.io/js/dht-store.svg)](http://badge.fury.io/js/dht-store)
+![Downloads](https://img.shields.io/npm/dm/dht-store.svg?style=flat)
+
 A key/value store based on DHT.
 
 ## Features

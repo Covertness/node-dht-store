@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "0.12"
+before_script:
+  - "make build"
+after_script:
+  - "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
