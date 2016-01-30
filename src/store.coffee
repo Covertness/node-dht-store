@@ -94,15 +94,15 @@ module.exports =
 					return true
 
 				if replyMessage.r.seq > item.seq
-					if Type(replyMessage.r.v, Buffer) and Type(encoding, String)
-						item.v = replyMessage.r.v.toString encoding
-					else
-						item.v = replyMessage.r.v
+					item.v = replyMessage.r.v
 
 				return true
 			, (err, n) =>
 				if err
 					return cb err
+
+				if Type(item.v, Buffer) and Type(encoding, String)
+					item.v = item.v.toString encoding
 				cb null, item.v
 
 		destroy: () ->
