@@ -28,7 +28,7 @@ store.on('ready', function() {
             return;
         }
 
-        store.kvGet('key', function(err, v) {
+        store.kvGet('key', function(err, n, v) {
             console.log('value:', v);
             store.destroy();
         });

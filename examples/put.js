@@ -17,7 +17,7 @@ store.on('listening', function () {
 
 		console.log('put success! key:', key, 'nodesNum:', n);
 		
-		store.kvGet('key', function (err, value) {
+		store.kvGet('key', function (err, n, value) {
 			console.log('value:', value);
 		});
 	});

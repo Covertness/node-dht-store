@@ -98,12 +98,9 @@ module.exports =
 
 				return true
 			, (err, n) =>
-				if err
-					return cb err
-
 				if Type(item.v, Buffer) and Type(encoding, String)
 					item.v = item.v.toString encoding
-				cb null, item.v
+				cb err, n, item.v
 
 		destroy: () ->
 			if @destroyed

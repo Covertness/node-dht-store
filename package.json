@@ -1,6 +1,6 @@
 {
   "name": "dht-store",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A key/value store based on DHT.",
   "main": "index.js",
   "scripts": {

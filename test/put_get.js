@@ -13,7 +13,7 @@ test('put and get on the same node', function(t) {
 			t.error(err);
 			t.equal(key, 'key');
 
-			store.kvGet('key', function(err, v) {
+			store.kvGet('key', function(err, n, v) {
 				t.error(err);
 				t.equal(v, value);
 				store.destroy();
@@ -49,7 +49,7 @@ test('put and get on the different node', function(t) {
 			nodeIdFile: 'second_node.data'
 		});
 		second_store.on('ready', function() {
-			second_store.kvGet('key', 'utf8', function(err, v) {
+			second_store.kvGet('key', 'utf8', function(err, n, v) {
 				t.error(err);
 				t.equal(v, value);
 				second_store.destroy();
