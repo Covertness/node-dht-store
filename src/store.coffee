@@ -68,6 +68,9 @@ module.exports =
 					k: k
 					v: value
 			closestNodes = @rpc.nodes.closest {id: k}
+
+			debug 'put', k.toString('hex'), '->', value, 'in', closestNodes
+
 			if closestNodes.length > 0
 				@rpc.queryAll closestNodes, message, null, (err, n) =>
 					if err
@@ -98,6 +101,8 @@ module.exports =
 
 				return true
 			, (err, n) =>
+				debug 'get', k.toString('hex'), '->', item.v, 'from', n, 'nodes'
+
 				if Type(item.v, Buffer) and Type(encoding, String)
 					item.v = item.v.toString encoding
 				cb err, n, item.v
