@@ -33,12 +33,14 @@ module.exports =
 				maxAge: @options.ttl
 			}
 
-			fs.readFile @options.nodeIdFile, (_, data) =>
+			fs.readFile @options.nodeIdFile, "utf-8", (_, data) =>
 				if data
-					@options.id = data
+					idBuffer = new Buffer data, 'base64'
+					if idBuffer.length == 20
+						@options.id = idBuffer
 
 				@rpc = krpc @options
-				fs.writeFile @options.nodeIdFile, @rpc.id
+				fs.writeFile @options.nodeIdFile, @rpc.id.toString 'base64'
 				@nodeId = @rpc.id
 
 				@rpc.on 'listening', @emit.bind(this, 'listening')
