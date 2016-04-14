@@ -41,7 +41,6 @@ test('put and get on the different node', function(t) {
 
 	first_store.on('listening', function() {
 		var second_store = new Store({
-			bootstrap: true,
 			nodes: [{
 				host: '127.0.0.1',
 				port: 6881

@@ -14,8 +14,6 @@ defaultOptions =
 	ttl: 3 * 60 * 1000
 	# the file that stored node id
 	nodeIdFile: 'nodeid.data'
-	# bootstrap
-	bootstrap: false
 	# bootstrap nodes
 	nodes: []
 
@@ -50,10 +48,7 @@ module.exports =
 				@rpc.on 'query', (message, peer) =>
 					@handleMessage message, peer
 
-				if @options.bootstrap
-					@_bootstrap()
-				else
-					@emit 'ready'
+				@emit 'ready'
 
 		listen: (port, cb) ->
 			@rpc.bind port, cb
@@ -109,21 +104,21 @@ module.exports =
 					item.v = item.v.toString encoding
 				cb err, n, item.v
 
-		destroy: () ->
+		destroy: (cb) ->
 			if @destroyed
+				cb && cb()
 				return
 
-			@rpc.destroy()
+			@rpc.destroy(cb)
 
-		_bootstrap: () ->
+		bootstrap: (cb) ->
 			message =
 				q: 'find_node'
 				a: 
 					id: @nodeId
 					target: @nodeId
 
-			@rpc.populate @nodeId, message, () =>
-				@emit 'ready'
+			@rpc.populate @nodeId, message, cb
 
 		handleMessage: (message, peer) ->
 			method = message.q.toString()

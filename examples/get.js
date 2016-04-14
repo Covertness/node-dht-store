@@ -1,7 +1,6 @@
 var Store = require('../');
 
 var store = new Store({
-	bootstrap: true,
 	nodes: [
 		{host: '127.0.0.1', port: 6881}
 	],
