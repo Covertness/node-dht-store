@@ -70,8 +70,6 @@ module.exports =
 
 			if closestNodes.length > 0
 				@rpc.queryAll closestNodes, message, null, (err, n) =>
-					if err
-						return cb err, key, n + 1
 					cb null, key, n + 1
 			else
 				cb null, key, 1
@@ -102,7 +100,11 @@ module.exports =
 
 				if Type(item.v, Buffer) and Type(encoding, String)
 					item.v = item.v.toString encoding
-				cb err, n, item.v
+
+				if item.v == null
+					cb err, n, item.v
+				else
+					cb null, n + 1, item.v
 
 		destroy: (cb) ->
 			if @destroyed
