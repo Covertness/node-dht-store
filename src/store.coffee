@@ -38,7 +38,9 @@ module.exports =
 						@options.id = idBuffer
 
 				@rpc = krpc @options
-				fs.writeFile @options.nodeIdFile, @rpc.id.toString 'base64'
+				fs.writeFile @options.nodeIdFile, @rpc.id.toString('base64'), (err) =>
+					if err
+						console.error(err)
 				@nodeId = @rpc.id
 
 				@rpc.on 'listening', @emit.bind(this, 'listening')
